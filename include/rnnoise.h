@@ -101,6 +101,13 @@ RNNOISE_EXPORT float rnnoise_process_frame(DenoiseState *st, float *out, const f
 RNNOISE_EXPORT RNNModel *rnnoise_model_from_file(FILE *f);
 
 /**
+ * Load a model from a file using the full path to the file
+ *
+ * It must be deallocated with rnnoise_model_free()
+ */
+RNNOISE_EXPORT RNNModel *rnnoise_model_from_file_by_path(const char *file);
+
+/**
  * Free a custom model
  *
  * It must be called after all the DenoiseStates referring to it are freed.
