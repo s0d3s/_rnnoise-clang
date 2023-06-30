@@ -137,6 +137,20 @@ RNNModel *rnnoise_model_from_file(FILE *f)
     return ret;
 }
 
+RNNModel *rnnoise_model_from_file_by_path(const char *file){
+    FILE *fp;
+    RNNModel *ret;
+    
+    fp = fopen(file, "r");
+    if (!fp)
+        return NULL;
+    
+    ret = rnnoise_model_from_file(fp);
+    fclose(fp);
+   
+    return ret;
+}
+
 void rnnoise_model_free(RNNModel *model)
 {
 #define FREE_MAYBE(ptr) do { if (ptr) free(ptr); } while (0)
